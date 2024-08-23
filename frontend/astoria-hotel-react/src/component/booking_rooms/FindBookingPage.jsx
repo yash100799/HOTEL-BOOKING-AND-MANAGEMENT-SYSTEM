@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ApiService from '../../service/ApiService'; // Assuming your service is in a file called ApiService.js
-
+//Facing issue while retreiving roomType --------->
 const FindBookingPage = () => {
     const [confirmationCode, setConfirmationCode] = useState(''); // State variable for confirmation code
     const [bookingDetails, setBookingDetails] = useState(null); // State variable for booking details
@@ -49,22 +49,27 @@ const FindBookingPage = () => {
                     <br />
                     <hr />
                     <br />
-                    <h3>Booker Detials</h3>
+                    <h3>Booker Details</h3>
                     <div>
-                        <p> Name: {bookingDetails.user.name}</p>
-                        <p> Email: {bookingDetails.user.email}</p>
-                        <p> Phone Number: {bookingDetails.user.phoneNumber}</p>
+                        <p>Name: {bookingDetails.user?.name}</p>
+                        <p>Email: {bookingDetails.user?.email}</p>
+                        <p>Phone Number: {bookingDetails.user?.phoneNumber}</p>
                     </div>
 
                     <br />
                     <hr />
                     <br />
+                    
                     <h3>Room Details</h3>
+                    
                     <div>
-                        console.log(booking);
-                        <p> Room Type: {bookingDetails.room.roomType}</p>
-                        console.log(booking);
-                        <img src={bookingDetails.room.roomPhotoUrl} alt="" sizes="" srcSet="" />
+                        
+                        <p>Room Type: {bookingDetails.room?.roomType || 'Room type not specified'}</p>
+                        {bookingDetails.room?.roomPhotoUrl ? (
+                            <img src={bookingDetails.room.roomPhotoUrl} alt="Room" />
+                        ) : (
+                            <p>No image available</p>
+                        )}
                     </div>
                 </div>
             )}

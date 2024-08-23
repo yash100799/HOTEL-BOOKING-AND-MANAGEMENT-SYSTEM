@@ -27,8 +27,12 @@ public class RoomService implements IRoomService {
     @Autowired
     private BookingRepository bookingRepository;
 
+    private final AwsS3Service awsS3Service;
+
     @Autowired
-    private AwsS3Service awsS3Service;
+    public RoomService(AwsS3Service awsS3Service) {
+        this.awsS3Service = awsS3Service;
+    }
 
     @Override
     public Response addNewRoom(MultipartFile photo, String roomType, BigDecimal roomPrice, String description) {

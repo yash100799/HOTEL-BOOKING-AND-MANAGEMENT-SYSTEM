@@ -20,10 +20,10 @@ import java.io.InputStream;
 @Service
 public class AwsS3Service {
 
-    @Value("${aws.s3.access.key}")
+    @Value("${AWS_S3_ACCESS_KEY}")
     private String awsS3AccessKey;
 
-    @Value("${aws.s3.secret.key}")
+    @Value("${AWS_S3_SECRET_KEY}")
     private String awsS3SecretKey;
 
     public String saveImageToS3(MultipartFile photo) {
